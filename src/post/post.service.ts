@@ -44,7 +44,7 @@ export class PostService {
     return post;
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<Post | { message: string }> {
     const post = await this.PostModel.findByIdAndDelete(id).exec();
 
     if (!post) return { message: 'No existe el post' };
